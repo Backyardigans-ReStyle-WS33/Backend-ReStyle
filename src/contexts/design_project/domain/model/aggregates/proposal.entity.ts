@@ -1,5 +1,6 @@
 import {AggregateRoot} from "@nestjs/cqrs";
 import {Column,Entity,PrimaryGeneratedColumn} from "typeorm";
+import {ProposalCreatedEvent} from "../events/proposal-created.event";
 
 @Entity('proposals')
 export class Proposal extends AggregateRoot {
@@ -18,7 +19,11 @@ export class Proposal extends AggregateRoot {
 
     constructor() {
         super();
+
+    }
+    onCreation() {
         this.creationDate = new Date();
         this.status = 'In progress';
+        this.apply(new ProposalCreatedEvent(this.id));
     }
 }
