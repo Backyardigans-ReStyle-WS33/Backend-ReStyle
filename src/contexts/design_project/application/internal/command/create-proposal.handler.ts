@@ -1,7 +1,7 @@
 import {CommandHandler, EventPublisher, ICommandHandler} from "@nestjs/cqrs";
 import {CreateProposalCommand} from "../../../domain/model/commands/create-proposal.command";
 import {Inject} from "@nestjs/common";
-import {ProposalRepository} from "../../../infraestructure/repositories/proposal-repository.providers";
+import {ProposalRepository} from "../../../infraestructure/repositories/proposal-repository";
 import {Proposal} from "../../../domain/model/aggregates/proposal.entity";
 
 @CommandHandler(CreateProposalCommand)
