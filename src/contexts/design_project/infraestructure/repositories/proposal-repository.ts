@@ -19,9 +19,8 @@ export class ProposalRepository{
         return await this.proposalRepository.findOneBy({id: id});
     }
 
-    async findOneByName(name: string): Promise<Proposal>{
-        return await this.proposalRepository.findOneBy({name: name});
+    async findOneByNameAndLastName(name: string, lastname:string): Promise<Proposal>{
+        return await this.proposalRepository.findOneBy({name: {firstName: name, lastName: lastname}});
     }
-
 
 }
