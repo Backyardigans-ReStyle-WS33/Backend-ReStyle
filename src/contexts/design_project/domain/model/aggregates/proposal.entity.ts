@@ -1,13 +1,14 @@
 import {AggregateRoot} from "@nestjs/cqrs";
 import {Column,Entity,PrimaryGeneratedColumn} from "typeorm";
 import {ProposalCreatedEvent} from "../events/proposal-created.event";
+import {CustomerCompleteName} from "../value-objects/customer-complete-name.value-object";
 
 @Entity('proposals')
 export class Proposal extends AggregateRoot {
     @PrimaryGeneratedColumn('uuid')
     id: string;
     @Column()
-    name: string;
+    name: CustomerCompleteName;
     @Column()
     description: string;
     @Column()
